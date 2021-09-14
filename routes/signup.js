@@ -1,17 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../configuration/dbConnection");
+const { v4: uuidv4 } = require("uuid");
 
 router.get("/", (req, res) => {
   res.render("signup");
 });
 
 router.post("/", (req, res) => {
+  var id = uuidv4();
   var name = req.body.username;
   var mail = req.body.email;
   var password = req.body.password;
   var row =
-    "INSERT INTO Users (username, email, password) VALUES ('" +
+    "INSERT INTO Users (id,username, email, password) VALUES ('" +
+    id +
+    "', '" +
     name +
     "', '" +
     mail +
@@ -19,11 +23,14 @@ router.post("/", (req, res) => {
     password +
     "')";
   db.query(row, (err, result) => {
-    if (err) throw err;
-    console.log("inserted a new row");
+    if (err) throw error;
+    if (err) {
+      res.redirect("/signup");
+    } else {
+      console.log("inserted a new row");
+      res.redirect("/");
+    }
   });
-
-  res.render("home");
 });
 
 module.exports = router;
