@@ -68,7 +68,7 @@ router.post("/", (req, res) => {
         if (response[0].is_verified == 0) {
           sendVerificationMail(response[0].id);
         } else if (response[0].password == password) {
-          req.session.cookie.maxAge = 14 * 24 * 3600000;
+          req.session.cookie.maxAge = 24 * 3600000;
           req.session.loggedIn = true;
           callback();
         } else {
