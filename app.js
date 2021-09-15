@@ -8,9 +8,11 @@ app.set("views", "./views");
 
 const home = require("./routes/home");
 const signup = require("./routes/signup");
+const verification = require("./routes/verification");
 
 app.use("/", home);
 app.use("/signup", signup);
+app.use("/verification", verification);
 
 app.get("*", (req, res) => {
   res.send("Sorry this is an invalid url.");
