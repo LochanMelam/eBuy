@@ -1,28 +1,22 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title eBuy
-    body 
-        form(action="/signup", method="POST")
-            label(for="name") Username: 
-            input(type="text" name="username")
-            br
-            br
-            label(for="mail") Mail Id: 
-            input(type="text" name="email")
-            br
-            br
-            label(for="password") Password: 
-            input(type="password" name="password") 
-            br
-            br
-            if (prompt)
-                    p #{prompt}
-            
-            br
-            br
-            button(type="submit") Submit
+extends layout 
+block content 
+    form(action="/signup", method="POST")
+        label(for="name") Username: 
+        input(type="text" name="username")
+        br
+        br
+        label(for="mail") Mail Id: 
+        input(type="text" name="email")
+        br
+        br
+        label(for="password") Password: 
+        input(type="password" name="password") 
+        br
+        br
+        if (prompt)
+                p #{prompt}
+        
+        br
+        br
+        button(type="submit") Submit
               
