@@ -1,0 +1,18 @@
+extends layout 
+block content 
+    form(method="POST")
+        lable(for="email") Email 
+        input(name="email" type="email" placeholder="enter your email" required)
+        br
+        lable(for="password") Password  
+        input(name="password" type="password" placeholder="enter your password" required)
+        br
+        if(prompt)
+            h3 #{prompt}
+            br
+        button(type="submit") Signin 
+        br
+    a(href="/signup") Signup
+
+
+

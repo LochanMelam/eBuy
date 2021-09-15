@@ -1,21 +1,34 @@
+// required modules
 const express = require("express");
 const app = express();
+const session = require("express-session");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// view engine
 app.set("view engine", "pug");
 app.set("views", "./views");
 
+// extracts form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// session middleware
+app.use(
+  session({ secret: "shhhhhh!", saveUninitialized: false, resave: false })
+);
+
 const home = require("./routes/home");
 const signup = require("./routes/signup");
+const signin = require("./routes/signin");
+const signout = require("./routes/signout");
 const verification = require("./routes/verification");
 
 app.use("/", home);
 app.use("/signup", signup);
+app.use("/signin", signin);
+app.use("/signout", signout);
 app.use("/verification", verification);
 
 app.get("*", (req, res) => {
-  res.send("Sorry this is an invalid url.");
+  req.session.loggedIn ? res.redirect("/") : res.redirect("/signin");
 });
 
 app.listen(process.env.PORT || 3000, () =>

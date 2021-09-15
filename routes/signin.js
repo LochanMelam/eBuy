@@ -2,44 +2,25 @@ const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
 const db = require("../configuration/dbConnection");
-const { v4: uuidv4 } = require("uuid");
 
 router.get("/", (req, res) => {
-  req.session.loggedIn ? res.redirect("/") : res.render("signup");
+  req.session.loggedIn ? res.redirect("/") : res.render("signin");
 });
 
 router.post("/", (req, res) => {
-  var id = uuidv4();
-  var name = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
+
   //error callback
   function errorCallback(msg) {
-    res.render("signup", {
+    res.render("signin", {
       prompt: msg,
     });
   }
 
   //successfull callback
   function callback() {
-    var row =
-      "INSERT INTO Users (id,username, email, password) VALUES ('" +
-      id +
-      "', '" +
-      name +
-      "', '" +
-      email +
-      "', '" +
-      password +
-      "')";
-    db.query(row, (err, result) => {
-      if (err) {
-        console.log(err);
-        errorCallback("error adding User to the db please try again....");
-      } else {
-        sendVerificationMail(id);
-      }
-    });
+    res.redirect("/");
   }
 
   // sends a verification mail to the user
@@ -59,7 +40,7 @@ router.post("/", (req, res) => {
     var mailOptions = {
       from: "ecashier2021@gmail.com",
       to: `${email}`,
-      subject: "Account Verification for eBUy",
+      subject: "Account Verification for eBuy",
       text: `Click on the link  to verify your email http://${req.get(
         "host"
       )}/verification/${id}`,
@@ -76,24 +57,27 @@ router.post("/", (req, res) => {
       }
     });
   }
-  // checks if user with the email already exists
-  var emailExists = "SELECT id FROM Users WHERE email = '" + email + "'";
-  db.query(emailExists, (err, response) => {
-    if (err) console.log(err);
+
+  var userExists = "SELECT * FROM Users WHERE email = '" + email + "'";
+  db.query(userExists, (err, response) => {
+    if (err) throw err;
     try {
-      // if user with email doesn't exists, creates a new user account and sends verification mail
       if (response.length == 0) {
-        {
+        res.redirect("/signup");
+      } else {
+        if (response[0].is_verified == 0) {
+          sendVerificationMail(response[0].id);
+        } else if (response[0].password == password) {
+          req.session.cookie.maxAge = 14 * 24 * 3600000;
+          req.session.loggedIn = true;
           callback();
+        } else {
+          errorCallback("Invalid Password");
         }
       }
-      // if email already used then prompts the client, "email in use"
-      else {
-        errorCallback("email already in use");
-      }
-    } catch (error) {
-      console.log(error);
-      errorCallback("email already in use");
+    } catch (err) {
+      console.log(err);
+      errorCallback("Something went wrong.... Please try again");
     }
   });
 });
