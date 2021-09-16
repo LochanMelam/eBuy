@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
     var mailOptions = {
       from: "ecashier2021@gmail.com",
       to: `${email}`,
-      subject: "Account Verification for eBuy",
+      subject: "Account Verification for gadgetsHub",
       text: `Click on the link  to verify your email http://${req.get(
         "host"
       )}/verification/${id}`,

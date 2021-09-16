@@ -20,12 +20,16 @@ const signup = require("./routes/signup");
 const signin = require("./routes/signin");
 const signout = require("./routes/signout");
 const verification = require("./routes/verification");
+const forgotPassword = require("./routes/forgotPassword");
+const resetPassword = require("./routes/resetPassword")
 
 app.use("/", home);
 app.use("/signup", signup);
 app.use("/signin", signin);
 app.use("/signout", signout);
 app.use("/verification", verification);
+app.use("/forgotPassword", forgotPassword);
+app.use("/resetPassword", resetPassword)
 
 app.get("*", (req, res) => {
   req.session.loggedIn ? res.redirect("/") : res.redirect("/signin");
