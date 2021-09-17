@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
+const db = require("./configuration/dbConnection")
 
 // view engine
 app.set("view engine", "pug");
@@ -21,7 +22,9 @@ const signin = require("./routes/signin");
 const signout = require("./routes/signout");
 const verification = require("./routes/verification");
 const forgotPassword = require("./routes/forgotPassword");
-const resetPassword = require("./routes/resetPassword")
+const resetPassword = require("./routes/resetPassword");
+const allProductsApi = require("./routes/allProductsApi");
+const { response } = require("express");
 
 app.use("/", home);
 app.use("/signup", signup);
@@ -30,6 +33,9 @@ app.use("/signout", signout);
 app.use("/verification", verification);
 app.use("/forgotPassword", forgotPassword);
 app.use("/resetPassword", resetPassword)
+app.use("/api/allProducts", allProductsApi)
+
+
 
 app.get("*", (req, res) => {
   req.session.loggedIn ? res.redirect("/") : res.redirect("/signin");
