@@ -1,13 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
-const db = require("../configuration/dbConnection")
-
+const db = require("../configuration/dbConnection");
 
 router.get("/", (req, res) => {
   res.render("forgotPassword");
 });
-
 
 router.post("/", (req, res) => {
   var email = req.body.email;

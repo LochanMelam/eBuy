@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-const db = require("./configuration/dbConnection")
+const db = require("./configuration/dbConnection");
 
 // view engine
 app.set("view engine", "pug");
@@ -23,7 +23,7 @@ const signout = require("./routes/signout");
 const verification = require("./routes/verification");
 const forgotPassword = require("./routes/forgotPassword");
 const resetPassword = require("./routes/resetPassword");
-const allProductsApi = require("./routes/allProductsApi");
+const searchEngine = require("./routes/searchEngine");
 const { response } = require("express");
 
 app.use("/", home);
@@ -32,10 +32,8 @@ app.use("/signin", signin);
 app.use("/signout", signout);
 app.use("/verification", verification);
 app.use("/forgotPassword", forgotPassword);
-app.use("/resetPassword", resetPassword)
-app.use("/api/allProducts", allProductsApi)
-
-
+app.use("/resetPassword", resetPassword);
+app.use("/api/allProducts", searchEngine);
 
 app.get("*", (req, res) => {
   req.session.loggedIn ? res.redirect("/") : res.redirect("/signin");

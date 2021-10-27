@@ -1,4 +1,8 @@
 extends layout 
+block navContent 
+    ul(class="navbar-nav ml-auto")
+            li(class="nav-item") 
+                a(href="/signup") Signup
 block content 
     form(method="POST")
         lable(for="email") Email 
