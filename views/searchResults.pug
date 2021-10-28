@@ -1,0 +1,9 @@
+extends layout 
+block content 
+    if (results && results.length==1)
+        img(src="/"+results[0].image_url)
+    else if (results && results.length!=0)
+        each product of results
+            img(src="/"+product.image_url)
+            br
+

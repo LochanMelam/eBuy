@@ -30,11 +30,11 @@ html(lang="en")
             var arr;
             $("#auto").autocomplete({source: function(data, cb){
                 $.ajax({
-                    url: `/api/allProducts/${data.term}`,
+                    url: `/api/allProducts`,
                     method: 'GET',
                     dataType: 'json',
                     data: {
-                        name: data.term
+                        search  : data.term
                     },
                     success: function(res){
                         var result=[];
