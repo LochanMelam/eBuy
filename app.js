@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({ secret: "shhhhhh!", saveUninitialized: false, resave: false })
 );
+app.use(express.static("Product_images"));
 
 const home = require("./routes/home");
 const signup = require("./routes/signup");
@@ -24,7 +25,7 @@ const verification = require("./routes/verification");
 const forgotPassword = require("./routes/forgotPassword");
 const resetPassword = require("./routes/resetPassword");
 const searchEngine = require("./routes/searchEngine");
-const productsByCategory = require("./routes/getProductsByCategory");
+const searchResults = require("./routes/searchResults");
 const { response } = require("express");
 
 app.use("/", home);
@@ -35,8 +36,7 @@ app.use("/verification", verification);
 app.use("/forgotPassword", forgotPassword);
 app.use("/resetPassword", resetPassword);
 app.use("/api/allProducts", searchEngine);
-app.use("/api/productsByCategory", productsByCategory);
-
+app.use("/searchResults", searchResults);
 app.get("*", (req, res) => {
   req.session.loggedIn ? res.redirect("/") : res.redirect("/signin");
 });

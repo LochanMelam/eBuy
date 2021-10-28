@@ -19,8 +19,8 @@ html(lang="en")
                 span(class="navbar-toggler-icon")
             div(class="collapse navbar-collapse")
             div(class="collapse navbar-collapse" id="navbarSupportedContent")
-                form(class="form-inline my-2 my-lg-0")
-                    input(class="form-control mr-sm-2" id="auto" type="search" placeholder="Search" aria-label="Search")
+                form(class="form-inline my-2 my-lg-0" action="/searchResults")
+                    input(class="form-control mr-sm-2" id="auto" name="search" type="search" placeholder="Search" aria-label="Search")
                     button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Search
 
             block navContent
@@ -40,7 +40,7 @@ html(lang="en")
                         var result=[];
                         for(var i=0;i<res.length;i++)
                         {
-                            result.push(res[i].name)
+                            result.push({label:res[i].name})
                         }
                         if(!result.length)
                         {
