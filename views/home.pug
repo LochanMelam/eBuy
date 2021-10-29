@@ -1,7 +1,10 @@
 extends layout 
-block navContent 
-    ul(class="navbar-nav ml-auto")
-        li(class="nav-item") 
-            a(href="/signout") Signout
+block dropdown
+    a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Hello! #{user}
+    div(class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown") 
+        a(class="dropdown-item" href="#") Cart
+        a(class="dropdown-item" href="#") Orders
+        div(class="dropdown-divider")
+        a(class="dropdown-item" href="/signout") signout
         
         

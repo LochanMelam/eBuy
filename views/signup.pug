@@ -1,8 +1,8 @@
 extends layout 
-block navContent
-    ul(class="navbar-nav ml-auto")
-            li(class="nav-item") 
-                a(href="/signin") Signin
+block dropdown
+    a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+    div(class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown") 
+        a(class="dropdown-item" href="/signin") Signin 
 block content 
     form(action="/signup", method="POST")
         label(for="username") Name: 

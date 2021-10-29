@@ -1,8 +1,8 @@
 extends layout 
-block navContent 
-    ul(class="navbar-nav ml-auto")
-            li(class="nav-item") 
-                a(href="/signup") Signup
+block dropdown 
+    a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+    div(class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown") 
+        a(class="dropdown-item" href="/signup") Signup
 block content 
     form(method="POST")
         lable(for="email") Email 
