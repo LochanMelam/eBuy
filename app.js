@@ -26,6 +26,7 @@ const forgotPassword = require("./routes/forgotPassword");
 const resetPassword = require("./routes/resetPassword");
 const searchEngine = require("./routes/searchEngine");
 const searchResults = require("./routes/searchResults");
+const category = require("./routes/category");
 const { response } = require("express");
 
 app.use("/", home);
@@ -37,6 +38,8 @@ app.use("/forgotPassword", forgotPassword);
 app.use("/resetPassword", resetPassword);
 app.use("/api/allProducts", searchEngine);
 app.use("/searchResults", searchResults);
+app.use("/category", category);
+
 app.get("*", (req, res) => {
   req.session.loggedIn ? res.redirect("/") : res.redirect("/signin");
 });
