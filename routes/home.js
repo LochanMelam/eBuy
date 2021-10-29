@@ -6,7 +6,7 @@ function loginCheck(req, res, next) {
 }
 
 router.get("/", loginCheck, (req, res) => {
-  res.render("home");
+  res.render("home", { user: req.session.user });
 });
 
 module.exports = router;

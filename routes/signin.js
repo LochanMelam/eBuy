@@ -70,6 +70,8 @@ router.post("/", (req, res) => {
         } else if (response[0].password == password) {
           req.session.cookie.maxAge = 24 * 3600000;
           req.session.loggedIn = true;
+          req.session._id = response[0].id;
+          req.session.user = response[0].username;
           callback();
         } else {
           errorCallback("Invalid Password");
