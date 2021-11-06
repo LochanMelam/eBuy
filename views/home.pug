@@ -22,15 +22,15 @@ block content
             a(href="#") View More
 
         div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
-            each item of result[0]
+            each item of result[0].slice(0,6)
                 div(class="col-sm-4 col-md-2")
                     div(class="card text-dark card-block")
                         img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
                         div(class="card-body")
                             h4(class="card-title") #{item.name}
                             p(class="card-text") #{item.price} 
-                            a(href="#" class="btn btn-primary") Buy
-                            a(href="#" class="btn btn-secondary") Add to Cart
+                            a(href="#" class="btn btn-primary" style="float:left") Buy
+                            a(href="#" class="btn btn-secondary" style="float:right") Add to Cart
 
     br
     br
@@ -41,15 +41,15 @@ block content
             a(href="#") View More
 
         div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
-            each item of result[1]
+            each item of result[1].slice(0,6)
                 div(class="col-sm-4 col-md-2")
                     div(class="card text-dark card-block")
                         img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
                         div(class="card-body")
                             h4(class="card-title") #{item.name}
                             p(class="card-text") #{item.price} 
-                            a(href="#" class="btn btn-primary") Buy
-                            a(href="#" class="btn btn-secondary") Add to Cart
+                            a(href="#" class="btn btn-primary" style="float:left") Buy
+                            a(href="#" class="btn btn-secondary" style="float:right") Add to Cart
 
     br
     br
@@ -60,15 +60,15 @@ block content
             a(href="#") View More
 
         div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
-            each item of result[2]
+            each item of result[2].slice(0,6)
                 div(class="col-sm-4 col-md-2")
                     div(class="card text-dark card-block")
                         img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
                         div(class="card-body")
                             h4(class="card-title") #{item.name}
                             p(class="card-text") #{item.price} 
-                            a(href="#" class="btn btn-primary") Buy
-                            a(href="#" class="btn btn-secondary") Add to Cart
+                            a(href="#" class="btn btn-primary" style="float:left") Buy
+                            a(href="#" class="btn btn-secondary" style="float:right") Add to Cart
 
     br
     br
@@ -79,15 +79,15 @@ block content
             a(href="#") View More
 
         div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
-            each item of result[3]
+            each item of result[3].slice(0,6)
                 div(class="col-sm-4 col-md-2")
                     div(class="card text-dark card-block")
                         img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
                         div(class="card-body")
                             h4(class="card-title") #{item.name}
                             p(class="card-text") #{item.price} 
-                            a(href="#" class="btn btn-primary") Buy
-                            a(href="#" class="btn btn-secondary") Add to Cart
+                            a(href="#" class="btn btn-primary" style="float:left") Buy
+                            a(href="#" class="btn btn-secondary" style="float:right") Add to Cart
 
     br
     br
