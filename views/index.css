@@ -1,13 +1,13 @@
-.scrolling-wrapper{
-    overflow-x: auto;
+.scrolling-wrapper {
+  overflow-x: auto;
 }
 
-body{
-    color: #fff;
-    font-family: 'system-ui';
+body {
+  color: #fff;
+  font-family: "system-ui";
 }
 
 .card-block {
-    min-height: 220px;
-    margin-bottom: 15px;
+  min-height: 220px;
+  margin-bottom: 15px;
 }

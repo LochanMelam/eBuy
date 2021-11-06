@@ -1,4 +1,6 @@
-extends layout 
+extends layout
+block css 
+    link(rel="stylesheet" href="index.css") 
 block dropdown
     a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Hello! #{user}
     div(class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown") 
@@ -20,29 +22,74 @@ block content
             a(href="#") View More
 
         div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
-            div(class="col-sm-4 col-md-2")
-                div(class="card text-dark card-block")
-                    img(class="card-img-top" src="Images/Redmi_10Prime.jpg" alt="Card image" style="width:100%")
-                    div(class="card-body")
-                        h4(class="card-title") Redmi
-                        p(class="card-text") ₹ 13,999.00 
-                        a(href="#" class="btn btn-primary") Buy
-                        a(href="#" class="btn btn-secondary") Add to Cart
+            each item of result[0]
+                div(class="col-sm-4 col-md-2")
+                    div(class="card text-dark card-block")
+                        img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
+                        div(class="card-body")
+                            h4(class="card-title") #{item.name}
+                            p(class="card-text") #{item.price} 
+                            a(href="#" class="btn btn-primary") Buy
+                            a(href="#" class="btn btn-secondary") Add to Cart
 
     br
     br
 
     div(class="container-fluid bg-dark p-5 text-white" id="mobiles")
         div(style="display: flex; justify-content: space-between;")
-            h2 Mobiles
+            h2 Laptops
             a(href="#") View More
 
         div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
-            div(class="col-sm-4 col-md-2")
-                div(class="card text-dark card-block")
-                    img(class="card-img-top" src="Images/Redmi_10Prime.jpg" alt="Card image" style="width:100%")
-                    div(class="card-body")
-                        h4(class="card-title") Redmi
-                        p(class="card-text") ₹ 13,999.00 
-                        a(href="#" class="btn btn-primary") Buy
-                        a(href="#" class="btn btn-secondary") Add to Cart
+            each item of result[1]
+                div(class="col-sm-4 col-md-2")
+                    div(class="card text-dark card-block")
+                        img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
+                        div(class="card-body")
+                            h4(class="card-title") #{item.name}
+                            p(class="card-text") #{item.price} 
+                            a(href="#" class="btn btn-primary") Buy
+                            a(href="#" class="btn btn-secondary") Add to Cart
+
+    br
+    br
+
+    div(class="container-fluid bg-dark p-5 text-white" id="mobiles")
+        div(style="display: flex; justify-content: space-between;")
+            h2 Headsets
+            a(href="#") View More
+
+        div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
+            each item of result[2]
+                div(class="col-sm-4 col-md-2")
+                    div(class="card text-dark card-block")
+                        img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
+                        div(class="card-body")
+                            h4(class="card-title") #{item.name}
+                            p(class="card-text") #{item.price} 
+                            a(href="#" class="btn btn-primary") Buy
+                            a(href="#" class="btn btn-secondary") Add to Cart
+
+    br
+    br
+
+    div(class="container-fluid bg-dark p-5 text-white" id="mobiles")
+        div(style="display: flex; justify-content: space-between;")
+            h2 Watches
+            a(href="#") View More
+
+        div(class="scrolling-wrapper row flex-row flex-sm-nowrap pt-3")
+            each item of result[3]
+                div(class="col-sm-4 col-md-2")
+                    div(class="card text-dark card-block")
+                        img(class="card-img-top" src=item.image_url alt="Card image" style="width:100%")
+                        div(class="card-body")
+                            h4(class="card-title") #{item.name}
+                            p(class="card-text") #{item.price} 
+                            a(href="#" class="btn btn-primary") Buy
+                            a(href="#" class="btn btn-secondary") Add to Cart
+
+    br
+    br
+
+
